@@ -1,0 +1,38 @@
+using UnityEngine;
+
+public class Portal : MonoBehaviour
+{
+    public PortalColour portalType;
+
+    [SerializeField] private TeleportHandler teleportHandler;
+    
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        PlayerController player = col.gameObject.GetComponentInParent<PlayerController>();
+
+        if (col.gameObject.GetComponentInParent<PlayerController>())
+        {
+            teleportHandler.Teleport
+            (
+                player.gameObject, 
+                player.GetComponent<Rigidbody2D>(), 
+                portalType
+            );
+        }
+    }
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        teleportHandler = FindAnyObjectByType<TeleportHandler>();
+
+        if(portalType == PortalColour.Orange)
+        {
+            teleportHandler.orangePortal = gameObject.transform;
+        }
+        if(portalType == PortalColour.Blue)
+        {
+            teleportHandler.bluePortal = gameObject.transform;
+        }
+    }
+}

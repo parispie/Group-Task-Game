@@ -8,9 +8,12 @@ public class PlayerController : MonoBehaviour
     private readonly float speed = 8f;
     private readonly float jumpStrength = 16f;
 
+    
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform GroundCheck;
+    [SerializeField] private float acceleration = 40f;
+    [SerializeField] private float deceleration = 25f;
     public Transform bulletTransform;
     public GameObject portalBall;
     public Shooting rotatePointShootScript;
@@ -44,7 +47,21 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocityY);
+        float targetSpeed = horizontal * speed;
+        float rate;
+
+        if (horizontal != 0)
+        {
+            rate = acceleration;
+        }
+        else
+        {
+            rate = deceleration;
+        }
+        
+        float newVelocityX = Mathf.MoveTowards(rb.linearVelocityX, targetSpeed, rate*Time.deltaTime);
+        
+        rb.linearVelocity = new  Vector2(newVelocityX, rb.linearVelocityY);
     }
 
     private bool IsGrounded()

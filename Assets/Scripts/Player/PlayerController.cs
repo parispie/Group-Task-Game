@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool canShootBlue = true;
     public bool canShootOrange = true;
 
+    private float teleportTimer = 0f;
     private CubeManager cubeManager;
     public Transform bulletTransform;
     public GameObject portalBall;
@@ -57,6 +58,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (teleportTimer > 0)
+        {
+            teleportTimer -= Time.fixedDeltaTime;
+            return;
+        }
+        
         float targetSpeed = horizontal * speed;
         float rate;
 
@@ -72,6 +79,11 @@ public class PlayerController : MonoBehaviour
         float newVelocityX = Mathf.MoveTowards(rb.linearVelocityX, targetSpeed, rate*Time.deltaTime);
         
         rb.linearVelocity = new  Vector2(newVelocityX, rb.linearVelocityY);
+    }
+    
+    public void StartTeleportCooldown()
+    {
+        teleportTimer = 0.2f;
     }
 
     private bool IsGrounded()

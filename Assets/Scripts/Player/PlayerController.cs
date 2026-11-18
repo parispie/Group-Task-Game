@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private Transform GroundCheck;
+    [SerializeField] private LayerMask buddyLayer;
+    [SerializeField] private Transform groundCheck;
     [SerializeField] private float acceleration = 40f;
     [SerializeField] private float deceleration = 25f;
     [SerializeField] private float fireStrength = 13f;
@@ -88,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(GroundCheck.position, 0.1f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer) || Physics2D.OverlapCircle(groundCheck.position, 0.1f, buddyLayer);
     }
 
     private GameObject ShootBullet(PortalColour colour)

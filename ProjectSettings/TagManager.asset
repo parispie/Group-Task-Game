@@ -8,6 +8,7 @@ TagManager:
   - Portal
   - Wall/Default
   - BuddyCube
+  - PressurePlate
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Ground
   - Wall
   - Player
-  - 
+  - CollisionChecker
   - 
   - 
   - 

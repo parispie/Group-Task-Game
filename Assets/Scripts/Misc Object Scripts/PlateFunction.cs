@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlateFunction : MonoBehaviour
@@ -6,7 +7,7 @@ public class PlateFunction : MonoBehaviour
     [SerializeField] private Sprite pressurePlate;
     [SerializeField] private Sprite pressurePlateOn;
     [SerializeField] private SpriteRenderer spr;
-    [SerializeField] private GateController connectedGate;
+    [SerializeField] private List<GateController> connectedGates;
     [SerializeField] private float delayTime = 0.7f;
     private bool isPlateActivated = false;
 
@@ -17,14 +18,20 @@ public class PlateFunction : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("enter");
-        OnPlateShift(col);
+        if (col.CompareTag("Player") || col.CompareTag("BuddyCube"))
+        {
+            Debug.Log("enter");
+            OnPlateShift(col);
+        }
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        Debug.Log("exit");
-        StartCoroutine(PlateDelay(col));
+        if (col.CompareTag("Player") || col.CompareTag("BuddyCube"))
+        {
+            Debug.Log("exit");
+            StartCoroutine(PlateDelay(col));
+        }
     }
 
     void OnPlateShift(Collider2D col)
@@ -34,7 +41,11 @@ public class PlateFunction : MonoBehaviour
             isPlateActivated = !isPlateActivated;
             spr.sprite = isPlateActivated ? pressurePlateOn : pressurePlate;
         }
-        connectedGate.SwitchGate();
+        
+        foreach (GateController gate in connectedGates)
+        {
+            gate.SwitchGate();
+        }
     }
 
     private IEnumerator PlateDelay(Collider2D col)

@@ -11,6 +11,8 @@ public class GateController : MonoBehaviour
         spr.color = new Color(1,1,1,1);
         collider.enabled = true;
     }
+
+    //makes gates visible and invisible whilst disabling and enabling collider
     public void SwitchGate()
     {
         if(collider.enabled)

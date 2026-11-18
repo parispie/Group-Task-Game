@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer) || Physics2D.OverlapCircle(groundCheck.position, 0.1f, buddyLayer);
     }
 
+    // fires ball in direction towards mouse
     private GameObject ShootBullet(PortalColour colour)
     {
         GameObject firedBall = Instantiate(portalBall, null);

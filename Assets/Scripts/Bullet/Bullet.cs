@@ -74,10 +74,12 @@ public class Bullet : MonoBehaviour
     {
         if (block.GetComponent<PortalDir>())
         {
+                //get array of all portals on screen
                 portals = FindObjectsByType<Portal>();
 
                 for (int i = 0; i < portals.Length; i++)
                 {
+                    //make sure there's only ever two portals by destroying the oldest portal component and setting the wall that had it back to default
                     if (portals[i].portalType == (PortalColour)telportType && portals[i].gameObject != block)
                     {
                         Destroy(portals[i].gameObject.GetComponent<Portal>());
@@ -91,6 +93,7 @@ public class Bullet : MonoBehaviour
                     }
                 }
 
+                // adding a portal to a fresh wall . relies on the horizontalDir and verticalDir values from portalDir.cs
                 if (!block.GetComponent<Portal>())
                 {
                     block.AddComponent<Portal>();

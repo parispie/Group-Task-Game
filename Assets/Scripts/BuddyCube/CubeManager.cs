@@ -38,8 +38,10 @@ public class CubeManager : MonoBehaviour
         Debug.Log("pickuped");
     }
 
+    
     void DropCube()
     {
+        //checks the ColliderInfo script to see if it's returning true on triggers or collisions so you can't throw cubes through walls or gates
         if (colInfo.isTrig == true || colInfo.isCol == true)
         {
             return;
@@ -51,6 +53,7 @@ public class CubeManager : MonoBehaviour
 
         Rigidbody2D droppedCubeRig = droppedCube.GetComponent<Rigidbody2D>();
         
+        // fire towards mouse
         droppedCubeRig.AddForce(GetComponent<Shooting>().DirectionToMouse() * 5, ForceMode2D.Impulse);
         Debug.Log("dropped");
     }

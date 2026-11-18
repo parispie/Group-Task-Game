@@ -7,6 +7,7 @@ public class Portal : MonoBehaviour
     [SerializeField] private TeleportHandler teleportHandler;
     
 
+    // teleports user to other portal. special check for the cube
     private void OnTriggerEnter2D(Collider2D col)
     {
         PlayerController player = col.gameObject.GetComponentInParent<PlayerController>();
@@ -33,7 +34,6 @@ public class Portal : MonoBehaviour
         }
 
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         teleportHandler = FindAnyObjectByType<TeleportHandler>();

@@ -48,6 +48,7 @@ public class PlateFunction : MonoBehaviour
         }
     }
 
+    //this is for when the box bounces a little on the plate, so that it doesn't rapidly make the gate flash visible and invisible
     private IEnumerator PlateDelay(Collider2D col)
     {
         yield return new WaitForSeconds(delayTime);

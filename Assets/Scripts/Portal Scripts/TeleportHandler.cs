@@ -31,16 +31,22 @@ public class TeleportHandler : MonoBehaviour
         }
     }
 
+    
     private void TeleportPlayer(PortalDir portalOne, PortalDir portalTwo, GameObject portal, Rigidbody2D rig)
     {
         float speedBoost = 1.05f;
+
+        //direction that the exit wall/portal faces
         Vector2 exit = new Vector2(portalTwo.horizontalDir, portalTwo.verticalDir).normalized;
 
+        //move the player/obj to the exit wall but slightly more so they dont spawn inside it
         portal.transform.position = (Vector2)portalTwo.transform.position + (exit * 1.05f);
 
+        //take how fast the player was going, increase speed slightly, and clamp between min and max speed
         float speed =  Mathf.Clamp(speedBoost * rig.linearVelocity.magnitude, minSpeed, maxSpeed);
         rig.linearVelocity = exit * speed;
 
+        //makes sure the player ignores portals for a small period for no rapid teleporting
         rig.GetComponent<PlayerController>().StartTeleportCooldown();
 
     }

@@ -10,13 +10,11 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private GameObject cubePrefab;
     
-    private CubeManager cubeManager;
+    [SerializeField] private CubeManager cubeManager;
     
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        
-        cubeManager = GetComponentInParent<CubeManager>();
 
         defaultSprite = gunSpriteRenderer.sprite;
     }
@@ -32,7 +30,7 @@ public class Shooting : MonoBehaviour
             gunSpriteRenderer.sprite = defaultSprite;
         }
 
-    mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
         Vector3 rotation = mousePos - transform.position;
 

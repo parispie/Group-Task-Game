@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Shooting))]
 public class CubeManager : MonoBehaviour
 {
     public GameObject grabRange;
@@ -39,8 +40,11 @@ public class CubeManager : MonoBehaviour
 
     void DropCube()
     {
-        Instantiate(cubePrefab, spawnPoint.position, Quaternion.identity);
+        GameObject droppedCube = Instantiate(cubePrefab, spawnPoint.position, Quaternion.identity);
+        droppedCube.transform.position = transform.position;
         isHoldingCube = false;
+        Rigidbody2D droppedCubeRig = droppedCube.GetComponent<Rigidbody2D>();
+        droppedCubeRig.AddForce(GetComponent<Shooting>().DirectionToMouse() * 5, ForceMode2D.Impulse);
         Debug.Log("dropped");
     }
     

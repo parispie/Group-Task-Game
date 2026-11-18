@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        cubeManager = GetComponent<CubeManager>();
+        cubeManager = GetComponentInChildren<CubeManager>();
     }
     
     void Update()

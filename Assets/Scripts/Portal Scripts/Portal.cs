@@ -20,6 +20,18 @@ public class Portal : MonoBehaviour
                 portalType
             );
         }
+
+        if (col.gameObject.tag == "BuddyCube")
+        {
+            GameObject cube = col.gameObject;
+            teleportHandler.Teleport
+            (
+                cube, 
+                cube.GetComponent<Rigidbody2D>(), 
+                portalType
+            );
+        }
+
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

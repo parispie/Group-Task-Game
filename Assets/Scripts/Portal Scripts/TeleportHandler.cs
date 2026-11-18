@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TeleportHandler : MonoBehaviour
 {
-    public float maxSpeed = 20f;
+    public float maxSpeed = 100f;
     public float minSpeed = 4f;
 
     public Transform orangePortal;

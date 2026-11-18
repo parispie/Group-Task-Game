@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 
     private float horizontal;
     private readonly float speed = 8f;
-    private readonly float jumpStrength = 16f;
+    private readonly float jumpStrength = 8f;
 
     
     [SerializeField] private Rigidbody2D rb;
@@ -14,11 +14,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform GroundCheck;
     [SerializeField] private float acceleration = 40f;
     [SerializeField] private float deceleration = 25f;
+    private CubeManager cubeManager;
     public Transform bulletTransform;
     public GameObject portalBall;
     public Shooting rotatePointShootScript;
 
-
+    void Start()
+    {
+        cubeManager = GetComponent<CubeManager>();
+    }
+    
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -33,16 +38,18 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocityX, rb.linearVelocity.y * 0.5f);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (!cubeManager.isHoldingCube)
         {
-            ShootBullet(PortalColour.Blue);
+            if (Input.GetMouseButtonDown(0))
+            {
+                ShootBullet(PortalColour.Blue);
 
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                ShootBullet(PortalColour.Orange);
+            }
         }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            ShootBullet(PortalColour.Orange);
-        }
-        
     }
 
     private void FixedUpdate()

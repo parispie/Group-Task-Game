@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
@@ -5,14 +6,33 @@ public class Shooting : MonoBehaviour
     private Camera mainCam;
     private Vector3 mousePos;
 
+    [SerializeField] private SpriteRenderer gunSpriteRenderer;
+    [SerializeField] private Sprite defaultSprite;
+    [SerializeField] private GameObject cubePrefab;
+    
+    private CubeManager cubeManager;
+    
     void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        
+        cubeManager = GetComponentInParent<CubeManager>();
+
+        defaultSprite = gunSpriteRenderer.sprite;
     }
 
     void Update()
     {
-        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        if (cubeManager.isHoldingCube)
+        {
+            gunSpriteRenderer.sprite = cubePrefab.GetComponent<SpriteRenderer>().sprite;
+        }
+        else
+        {
+            gunSpriteRenderer.sprite = defaultSprite;
+        }
+
+    mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
         Vector3 rotation = mousePos - transform.position;
 

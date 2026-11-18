@@ -7,11 +7,12 @@ TagManager:
   - Wall
   - Portal
   - Wall/Default
+  - BuddyCube
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interactables
   - Water
   - UI
   - Ground

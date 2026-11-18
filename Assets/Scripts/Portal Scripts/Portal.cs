@@ -21,7 +21,7 @@ public class Portal : MonoBehaviour
             );
         }
 
-        if (col.gameObject.tag == "BuddyCube")
+        if (col.gameObject.CompareTag("BuddyCube"))
         {
             GameObject cube = col.gameObject;
             teleportHandler.Teleport

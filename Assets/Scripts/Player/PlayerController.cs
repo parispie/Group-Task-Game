@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform GroundCheck;
     [SerializeField] private float acceleration = 40f;
     [SerializeField] private float deceleration = 25f;
+    [SerializeField] private float fireStrength = 13f;
+    public bool canShootBlue = true;
+    public bool canShootOrange = true;
+
     private CubeManager cubeManager;
     public Transform bulletTransform;
     public GameObject portalBall;
@@ -40,12 +44,11 @@ public class PlayerController : MonoBehaviour
 
         if (!cubeManager.isHoldingCube)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && canShootBlue)
             {
                 ShootBullet(PortalColour.Blue);
-
             }
-            else if (Input.GetMouseButtonDown(1))
+            else if (Input.GetMouseButtonDown(1) && canShootOrange)
             {
                 ShootBullet(PortalColour.Orange);
             }
@@ -84,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
         firedBall.GetComponent<Bullet>().bulletType = colour;
 
-        firedBallRig.AddForce(rotatePointShootScript.DirectionToMouse() * 9, ForceMode2D.Impulse);
+        firedBallRig.AddForce(rotatePointShootScript.DirectionToMouse() * fireStrength, ForceMode2D.Impulse);
 
         return firedBall;
     }

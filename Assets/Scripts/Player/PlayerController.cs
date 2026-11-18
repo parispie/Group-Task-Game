@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(GroundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(GroundCheck.position, 0.1f, groundLayer);
     }
 
     private GameObject ShootBullet(PortalColour colour)

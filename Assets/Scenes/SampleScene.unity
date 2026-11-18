@@ -159,8 +159,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   GroundCheck: {fileID: 1198409457}
+  acceleration: 40
+  deceleration: 25
   bulletTransform: {fileID: 1301897837}
-  rotatePoint: {fileID: 709559618}
   portalBall: {fileID: 404034801331227575, guid: 432b7767d9ebeaf4499710e947fdb412, type: 3}
   rotatePointShootScript: {fileID: 709559619}
 --- !u!4 &18784337
@@ -1525,8 +1526,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e74276e61b0b805499dbac5b67a0a4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportHandler
-  teleportRadius: 0.1
   maxSpeed: 20
+  minSpeed: 4
   orangePortal: {fileID: 0}
   bluePortal: {fileID: 0}
 --- !u!4 &697156917

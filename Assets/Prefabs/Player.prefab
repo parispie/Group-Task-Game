@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2257031698758510350}
   - component: {fileID: 4825222969491441643}
   - component: {fileID: 5295196908640431102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3180811145651132640}
   - component: {fileID: 6647842785940371811}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 456833685506769852}
   - component: {fileID: 4611590773751651063}
   - component: {fileID: 3419998536961617277}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7467897889436956006}
   - component: {fileID: 3640201795094568775}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RotatePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1873662915624572998}
   - component: {fileID: 7515698451908904512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,7 +538,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 358270506248638922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2547114561020143932}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

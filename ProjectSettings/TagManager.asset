@@ -8,17 +8,18 @@ TagManager:
   - Portal
   - Wall/Default
   - BuddyCube
+  - PressurePlate
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Interactables
+  - Interactable
   - Water
   - UI
   - Ground
   - Wall
-  - 
-  - 
+  - Player
+  - CollisionChecker
   - 
   - 
   - 

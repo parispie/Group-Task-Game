@@ -6,18 +6,20 @@ public class PlayerController : MonoBehaviour
 
     private float horizontal;
     private readonly float speed = 8f;
-    private readonly float jumpStrength = 8f;
+    private readonly float jumpStrength = 4f;
 
     
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private Transform GroundCheck;
+    [SerializeField] private LayerMask buddyLayer;
+    [SerializeField] private Transform groundCheck;
     [SerializeField] private float acceleration = 40f;
     [SerializeField] private float deceleration = 25f;
     [SerializeField] private float fireStrength = 13f;
     public bool canShootBlue = true;
     public bool canShootOrange = true;
 
+    private float teleportTimer = 0f;
     private CubeManager cubeManager;
     public Transform bulletTransform;
     public GameObject portalBall;
@@ -57,6 +59,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (teleportTimer > 0)
+        {
+            teleportTimer -= Time.fixedDeltaTime;
+            return;
+        }
+        
         float targetSpeed = horizontal * speed;
         float rate;
 
@@ -73,10 +81,15 @@ public class PlayerController : MonoBehaviour
         
         rb.linearVelocity = new  Vector2(newVelocityX, rb.linearVelocityY);
     }
+    
+    public void StartTeleportCooldown()
+    {
+        teleportTimer = 0.2f;
+    }
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(GroundCheck.position, 0.1f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer) || Physics2D.OverlapCircle(groundCheck.position, 0.1f, buddyLayer);
     }
 
     private GameObject ShootBullet(PortalColour colour)

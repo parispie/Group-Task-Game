@@ -4,10 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(Shooting))]
 public class CubeManager : MonoBehaviour
 {
-    public GameObject grabRange;
     public GameObject cubePrefab;
     public Transform spawnPoint;
     public bool isHoldingCube = false;
+    [SerializeField] ColliderInfo colInfo;
 
     private GameObject nearbyCube;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,10 +40,17 @@ public class CubeManager : MonoBehaviour
 
     void DropCube()
     {
+        if (colInfo.isTrig == true || colInfo.isCol == true)
+        {
+            return;
+        }
         GameObject droppedCube = Instantiate(cubePrefab, spawnPoint.position, Quaternion.identity);
+
         droppedCube.transform.position = transform.position;
         isHoldingCube = false;
+
         Rigidbody2D droppedCubeRig = droppedCube.GetComponent<Rigidbody2D>();
+        
         droppedCubeRig.AddForce(GetComponent<Shooting>().DirectionToMouse() * 5, ForceMode2D.Impulse);
         Debug.Log("dropped");
     }

@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 
     private float horizontal;
     private readonly float speed = 8f;
-    private readonly float jumpStrength = 4f;
+    private readonly float jumpStrength = 5f;
 
     
     [SerializeField] private Rigidbody2D rb;

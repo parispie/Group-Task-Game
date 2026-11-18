@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MoveScene : MonoBehaviour
 {
-    public void NextScene()
+    private void NextScene()
     {
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
@@ -26,6 +26,14 @@ public class MoveScene : MonoBehaviour
         else if (SceneManager.GetActiveScene().name == "Level 5")
         {
             SceneManager.LoadScene("Win Screen");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            NextScene();
         }
     }
 }

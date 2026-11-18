@@ -21,6 +21,7 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
+        //change the "white hand" object to be the sprite of the cube. makes it look like you're holding it!
         if (cubeManager.isHoldingCube)
         {
             gunSpriteRenderer.sprite = cubePrefab.GetComponent<SpriteRenderer>().sprite;

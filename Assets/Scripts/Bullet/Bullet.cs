@@ -57,8 +57,10 @@ public class Bullet : MonoBehaviour
 
     }
 
+    //destroy bullet when hitting any object
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //but spawn teleport/portal when hitting a wall which has PortalDir as a component
         if (collision.gameObject.GetComponent<PortalDir>())
         {
             Destroy(gameObject);
@@ -131,7 +133,7 @@ public class Bullet : MonoBehaviour
                         }
                         else if(horizontalDir == -1)
                         {
-                                wallSpriteRenderer.sprite = bluePortalLeft;
+                            wallSpriteRenderer.sprite = bluePortalLeft;
                         }
                         else if(verticalDir == 1)
                         {

@@ -14,19 +14,19 @@ public class TeleportHandler : MonoBehaviour
         //orange portal
         if (portalColour == PortalColour.Orange)
         {
-            TeleportPlayer(orangePortal.GetComponent<PortalDir>(), 
-            bluePortal.GetComponent<PortalDir>(), 
-            portal, 
-            rig);
+            TeleportPlayer(orangePortal.GetComponent<PortalDir>(),
+                bluePortal.GetComponent<PortalDir>(),
+                portal,
+                rig);
         }
 
         //blue portal
-        else if (portalColour ==  PortalColour.Blue)
+        else if (portalColour == PortalColour.Blue)
         {
             TeleportPlayer(
-                bluePortal.GetComponent<PortalDir>(), 
-                orangePortal.GetComponent<PortalDir>(), 
-                portal, 
+                bluePortal.GetComponent<PortalDir>(),
+                orangePortal.GetComponent<PortalDir>(),
+                portal,
                 rig);
         }
     }
@@ -41,6 +41,9 @@ public class TeleportHandler : MonoBehaviour
         float speed =  Mathf.Clamp(speedBoost * rig.linearVelocity.magnitude, minSpeed, maxSpeed);
         rig.linearVelocity = exit * speed;
 
+        rig.GetComponent<PlayerController>().StartTeleportCooldown();
+
     }
+    
 }
 

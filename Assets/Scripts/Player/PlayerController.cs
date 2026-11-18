@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform GroundCheck;
     [SerializeField] private float acceleration = 40f;
     [SerializeField] private float deceleration = 25f;
+    private float teleportTimer = 0f;
     private CubeManager cubeManager;
     public Transform bulletTransform;
     public GameObject portalBall;
@@ -54,6 +55,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (teleportTimer > 0)
+        {
+            teleportTimer -= Time.fixedDeltaTime;
+            return;
+        }
+        
         float targetSpeed = horizontal * speed;
         float rate;
 
@@ -69,6 +76,11 @@ public class PlayerController : MonoBehaviour
         float newVelocityX = Mathf.MoveTowards(rb.linearVelocityX, targetSpeed, rate*Time.deltaTime);
         
         rb.linearVelocity = new  Vector2(newVelocityX, rb.linearVelocityY);
+    }
+    
+    public void StartTeleportCooldown()
+    {
+        teleportTimer = 0.2f;
     }
 
     private bool IsGrounded()

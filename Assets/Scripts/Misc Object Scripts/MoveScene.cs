@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MoveScene : MonoBehaviour
 {
-    private void NextScene()
+    public void NextScene()
     {
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
@@ -25,7 +25,15 @@ public class MoveScene : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Level 5")
         {
+            SceneManager.LoadScene("Level 6");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 6")
+        {
             SceneManager.LoadScene("Win Screen");
+        }
+        else if (SceneManager.GetActiveScene().name == "Win Screen")
+        {
+            Application.Quit();
         }
     }
 

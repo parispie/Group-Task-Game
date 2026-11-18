@@ -33,10 +33,10 @@ public class TeleportHandler : MonoBehaviour
 
     private void TeleportPlayer(PortalDir portalOne, PortalDir portalTwo, GameObject portal, Rigidbody2D rig)
     {
-        float speedBoost = 1.1f;
+        float speedBoost = 1.05f;
         Vector2 exit = new Vector2(portalTwo.horizontalDir, portalTwo.verticalDir).normalized;
 
-        portal.transform.position = (Vector2)portalTwo.transform.position + (exit * 1.15f);
+        portal.transform.position = (Vector2)portalTwo.transform.position + (exit * 1.05f);
 
         float speed =  Mathf.Clamp(speedBoost * rig.linearVelocity.magnitude, minSpeed, maxSpeed);
         rig.linearVelocity = exit * speed;

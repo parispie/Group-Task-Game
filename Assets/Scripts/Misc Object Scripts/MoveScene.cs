@@ -7,6 +7,10 @@ public class MoveScene : MonoBehaviour
 {
     public void NextScene()
     {
+        if (SceneManager.GetActiveScene().name == "Main Menu")
+        {
+            SceneManager.LoadScene("Level 1");
+        }
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
             SceneManager.LoadScene("Level 2");

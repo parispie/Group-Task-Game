@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public Transform bulletTransform;
     public GameObject portalBall;
     public Shooting rotatePointShootScript;
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioSource audioSource;
 
     void Start()
     {
@@ -49,10 +51,12 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && canShootBlue)
             {
                 ShootBullet(PortalColour.Blue);
+                audioSource.PlayOneShot(shootSound);
             }
             else if (Input.GetMouseButtonDown(1) && canShootOrange)
             {
                 ShootBullet(PortalColour.Orange);
+                audioSource.PlayOneShot(shootSound);
             }
         }
     }

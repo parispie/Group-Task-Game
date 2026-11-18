@@ -69,15 +69,19 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // If player jsut teleported, wait until teleport timer runs out
         if (teleportTimer > 0)
         {
             teleportTimer -= Time.fixedDeltaTime;
             return;
         }
         
+        //Calculates the target gorizonal speed using player input and movement speed
         float targetSpeed = horizontal * speed;
         float rate;
 
+        //Use acceleration when player is moving
+        //Use deceleration when player isn't moving
         if (horizontal != 0)
         {
             rate = acceleration;
@@ -87,8 +91,10 @@ public class PlayerController : MonoBehaviour
             rate = deceleration;
         }
         
+        // Gradually moves the player's horizontal velocity towards to targeted speed
         float newVelocityX = Mathf.MoveTowards(rb.linearVelocityX, targetSpeed, rate*Time.deltaTime);
         
+        // Update horizontal velocity while maintaining vertical velocity
         rb.linearVelocity = new  Vector2(newVelocityX, rb.linearVelocityY);
     }
     

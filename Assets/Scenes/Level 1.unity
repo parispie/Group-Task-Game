@@ -326,7 +326,7 @@ MonoBehaviour:
   buddyLayer:
     serializedVersion: 2
     m_Bits: 0
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 1198409457}
   acceleration: 40
   deceleration: 25
   fireStrength: 13
